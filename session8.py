@@ -8,7 +8,7 @@ from typing import Union
 
 
 # Decorator that allows to run a function only at odd seconds, else prints out "We're even!"
-def odd_it(fn: types.FunctionType) -> "inner":
+def odd_it(fn: types.FunctionType) -> "inner: types.FunctionType":
     """
     Decorators to run the function only on odd seconds
     Use `@odd_it` above the function to use this decorator
@@ -39,7 +39,7 @@ def odd_it(fn: types.FunctionType) -> "inner":
 # The same logger that we coded in the class
 # it will be tested against a function that will be sent 2 parameters, and 
 # it would return some random string. 
-def logger(fn: types.FunctionType) -> "closure":
+def logger(fn: types.FunctionType) -> "closure: types.FunctionType":
     """
     Decorator to log the function call information.
     Use `@logged` above the function to use this decorator
@@ -89,7 +89,7 @@ def logger(fn: types.FunctionType) -> "closure":
 # to the function being decorated from var1, var2, var3, var4
 # YOU CAN ONLY REPLACE "#potentially missing code" LINES WITH MULTIPLE LINES BELOW
 # KEEP THE REST OF THE CODE SAME
-def decorator_factory(access: str) -> "decorator":
+def decorator_factory(access: str) -> "decorator: types.FunctionType":
     """
     Decorator factory to intake `access_level` and returns data based on the access level
     :param access: Privilege Access
@@ -109,7 +109,7 @@ def decorator_factory(access: str) -> "decorator":
         'no': [name],
     }
 
-    def dec(fn: types.FunctionType) -> "inner":
+    def dec(fn: types.FunctionType) -> "inner: types.FunctionType":
         """
         Decorator function to intake function
         :param fn: Function to be decorated
@@ -140,7 +140,7 @@ def decorator_factory(access: str) -> "decorator":
 
 # The authenticate function. Start with a dec_factory that sets the password. It's inner
 # will not be called with "password", *args, **kwargs on the fn
-def authenticate(set_password: str) -> "decorator":
+def authenticate(set_password: str) -> "decorator: types.FunctionType":
     """
     Decorator factory to accept the `password` argument and returns result if authenticated
     Use `@authenticate(password)` above the function to use this decorator
@@ -180,14 +180,14 @@ def authenticate(set_password: str) -> "decorator":
 
 
 # The timing function
-def timed(reps: int) -> "decorator":
+def timed(reps: int) -> "decorator: types.FunctionType":
     """
     Decorator factory to calculate the average elapsed time over `reps_number` of repetition
     Use `@timeit_` above the function to use this decorator
     :param reps: Number of times function is executed to calculate average
     :return: Decorator
     """
-    def dec(fn: types.FunctionType) -> "closures":
+    def dec(fn: types.FunctionType) -> "closures: types.FunctionType":
         """
         Decorator to check execution time of a function
         :param fn: Function to be decorated
@@ -217,3 +217,4 @@ def timed(reps: int) -> "decorator":
             return fn(*args, **kwargs)
         return inner
     return dec
+
